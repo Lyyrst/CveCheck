@@ -1,0 +1,28 @@
+server:
+  port: 8080
+
+spring:
+  application:
+    name: cvecheck
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/cvecheck_db
+    username: cvecheck_user
+    password: cvecheck_password
+    driver-class-name: org.postgresql.Driver
+
+  liquibase:
+    enabled: true
+    change-log: classpath:/db/changelog/db.changelog-master.xml
+
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    properties:
+      hibernate:
+        format_sql: true
+
+logging:
+  level:
+    org.hibernate.SQL: ERROR
+    org.hibernate.orm.jdbc.bind: ERROR
